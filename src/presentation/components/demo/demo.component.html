@@ -68,16 +68,6 @@
               <span class="upload__line upload__line--muted">or drag and drop</span>
               <input type="file" accept="image/*" hidden />
             </label>
-
-            <div class="uploads">
-              @for (item of uploads; track item.src + item.alt) {
-                <button type="button" class="uploads__item">
-                  <img [src]="item.src" [alt]="item.alt" />
-                </button>
-              }
-            </div>
-
-            <a class="panel__link" href="#">View all uploads</a>
           </div>
         </div>
       </p-card>

@@ -5,11 +5,6 @@ import { Card } from 'primeng/card';
 type EditorTool = 'templates' | 'images' | 'text' | 'stickers';
 type CardPage = 'front' | 'back';
 
-interface UploadItem {
-  src: string;
-  alt: string;
-}
-
 interface CardPageConfig {
   src: string;
   width: number;
@@ -56,15 +51,6 @@ export class DemoComponent {
     { id: 'images', label: 'Images' },
     { id: 'text', label: 'Text' },
     { id: 'stickers', label: 'Stickers' },
-  ];
-
-  readonly uploads: UploadItem[] = [
-    { src: '/birthday-1-front.png', alt: 'Birthday card front' },
-    { src: '/birthday-1-back.png', alt: 'Birthday card back' },
-    { src: '/landing-hero.png', alt: 'Guinness pint' },
-    { src: '/trebol.png', alt: 'Shamrock' },
-    { src: '/landing-heart.png', alt: 'Irish heart' },
-    { src: '/birthday-1-front.png', alt: 'Landscape' },
   ];
 
   selectTool(tool: EditorTool): void {

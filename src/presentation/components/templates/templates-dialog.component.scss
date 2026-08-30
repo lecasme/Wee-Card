@@ -1,0 +1,175 @@
+@use '../../configuration/theme/brand-tokens' as brand;
+
+:host {
+  @include brand.css-variables;
+}
+
+:host ::ng-deep {
+  .templates-dialog.p-dialog {
+    border: 1px solid #e6e2dc;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(1, 44, 1, 0.12);
+  }
+
+  .templates-dialog .p-dialog-content {
+    padding: 1.25rem 1.5rem 1rem;
+    background: #fff;
+  }
+
+  .templates-dialog .p-dialog-footer {
+    padding: 0.85rem 1.5rem 1.15rem;
+    border-top: 1px solid #ece8e2;
+    background: #fff;
+  }
+}
+
+.templates-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.templates-dialog__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.templates-dialog__icon {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+.templates-dialog__title {
+  margin: 0;
+  font: 700 1.15rem/1.3 var(--sans);
+  color: var(--ink);
+}
+
+.templates-dialog__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.templates-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: #f3f1ed;
+    color: var(--ink);
+  }
+}
+
+.templates-dialog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.15rem;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.75rem;
+  border: 1px solid #e0dcd4;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 500 0.78rem/1 var(--sans);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  &:hover:not(.is-active) {
+    border-color: #c8c4bc;
+    background: #faf9f7;
+  }
+
+  &.is-active {
+    border-color: var(--green);
+    background: var(--green);
+    color: #fff;
+  }
+}
+
+.templates-dialog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 0.85rem;
+  min-height: 140px;
+}
+
+.template-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover .template-item__frame {
+    box-shadow: 0 4px 14px rgba(1, 44, 1, 0.12);
+    transform: translateY(-1px);
+  }
+}
+
+.template-item__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1478 / 1064;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(1, 44, 1, 0.08);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.template-item__label {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.templates-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+}

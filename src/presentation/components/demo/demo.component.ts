@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Card } from 'primeng/card';
+import { TemplatesDialogComponent, TemplateItem } from '../templates/templates-dialog.component';
 
 type EditorTool = 'templates' | 'images' | 'text' | 'stickers';
 type CardPage = 'front' | 'back';
@@ -14,7 +15,7 @@ interface CardPageConfig {
 
 @Component({
   selector: 'demo',
-  imports: [RouterLink, Card],
+  imports: [RouterLink, Card, TemplatesDialogComponent],
   templateUrl: 'demo.component.html',
   styleUrl: 'demo.component.scss',
 })
@@ -22,8 +23,9 @@ export class DemoComponent {
   activeTool: EditorTool = 'images';
   activePage: CardPage = 'front';
   zoom = 100;
+  templatesDialogVisible = false;
 
-  readonly cardPages: Record<CardPage, CardPageConfig> = {
+  cardPages: Record<CardPage, CardPageConfig> = {
     front: {
       src: '/birthday-1-front.png',
       width: 1478,
@@ -41,10 +43,12 @@ export class DemoComponent {
   // A5 landscape height at 96dpi (559px), shown at ~93% for the editor canvas
   private readonly cardDisplayHeight = 520;
 
-  readonly pageList = [
-    { id: 'front' as CardPage, src: this.cardPages.front.src, label: this.cardPages.front.label },
-    { id: 'back' as CardPage, src: this.cardPages.back.src, label: this.cardPages.back.label },
-  ];
+  get pageList(): { id: CardPage; src: string; label: string }[] {
+    return [
+      { id: 'front', src: this.cardPages.front.src, label: this.cardPages.front.label },
+      { id: 'back', src: this.cardPages.back.src, label: this.cardPages.back.label },
+    ];
+  }
 
   readonly tools: { id: EditorTool; label: string }[] = [
     { id: 'templates', label: 'Templates' },
@@ -55,10 +59,28 @@ export class DemoComponent {
 
   selectTool(tool: EditorTool): void {
     this.activeTool = tool;
+
+    if (tool === 'templates') {
+      this.templatesDialogVisible = true;
+    }
   }
 
   selectPage(page: CardPage): void {
     this.activePage = page;
+  }
+
+  applyTemplate(template: TemplateItem): void {
+    const img = new Image();
+    img.onload = () => {
+      this.cardPages.front = {
+        ...this.cardPages.front,
+        src: template.src,
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+      };
+      this.activePage = 'front';
+    };
+    img.src = template.src;
   }
 
   get activeCard(): CardPageConfig {

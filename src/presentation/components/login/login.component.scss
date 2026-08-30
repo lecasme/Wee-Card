@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  min-height: 100svh;
+  background: #fdfcf7;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.login {
+  width: min(420px, calc(100% - 2rem));
+  margin: 18vh auto 0;
+  text-align: center;
+}
+
+.back {
+  color: #16332a;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin: 1.2rem 0 0.4rem;
+}
+
+p {
+  color: #5f615e;
+}
+
+.btn {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 0.75rem 1.3rem;
+  border-radius: 999px;
+  background: #16332a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}

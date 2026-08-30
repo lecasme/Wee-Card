@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fdfcf7;
+  color: #1c1c1c;
+  font-family: Inter, system-ui, sans-serif;
+}

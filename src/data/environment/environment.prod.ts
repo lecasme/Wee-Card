@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url: 'https://api.smr.rukielabs.com/smr',
+  url: 'https://api.weecard.ie/',
   appsync: {
     region: 'us-west-2',
     defaultAuthMode: 'apiKey',

@@ -73,10 +73,16 @@ export class TemplatesDialogComponent {
       category: 'just-because',
     },
     {
-      id: 'birthday-2',
-      src: '/birthday-2-front.png',
-      label: 'Birthday Celebration',
-      category: 'birthday',
+      id: 'congrats-2',
+      src: '/congrats-2-front.png',
+      label: 'Congratulations',
+      category: 'thank-you',
+    },
+    {
+      id: 'anniversary-2',
+      src: '/anniversary-2-front.png',
+      label: 'Anniversary',
+      category: 'anniversary',
     },
   ];
 

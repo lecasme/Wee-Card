@@ -1,1 +1,170 @@
-<p>Demo</p>
+<div class="editor">
+  <header class="editor__header">
+    <a class="logo" routerLink="/landing">
+      <img class="logo__mark" src="/trebol.png" alt="" width="24" height="24" />
+      <span>WeeCard</span>
+    </a>
+  </header>
+
+  <div class="editor__body">
+    <aside class="tools" aria-label="Editor tools">
+      @for (tool of tools; track tool.id) {
+        <button
+          type="button"
+          class="tools__btn"
+          [class.is-active]="activeTool === tool.id"
+          (click)="selectTool(tool.id)"
+        >
+          @switch (tool.id) {
+            @case ('templates') {
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="13" y="5" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="4" y="14" width="7" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="13" y="14" width="7" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            }
+            @case ('images') {
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="10" r="1.6" fill="currentColor"/>
+                <path d="M4 16l5-4 4 3 3-2 4 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            }
+            @case ('text') {
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 7h12M12 7v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            }
+            @case ('stickers') {
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                <path d="M9 14c1.2 1.4 2.4 2 3 2s1.8-.6 3-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            }
+          }
+          <span>{{ tool.label }}</span>
+        </button>
+      }
+    </aside>
+
+    <aside class="panel">
+      <h2 class="panel__title">Upload your images</h2>
+      <label class="upload">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 16V8m0 0l-3 3m3-3 3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M5 18h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span>Click to upload or drag and drop</span>
+        <input type="file" accept="image/*" hidden />
+      </label>
+      <div class="uploads">
+        @for (item of uploads; track item.src + item.alt) {
+          <button type="button" class="uploads__item">
+            <img [src]="item.src" [alt]="item.alt" />
+          </button>
+        }
+      </div>
+      <a class="panel__link" href="#">View all uploads</a>
+    </aside>
+
+    <main class="workspace">
+      <div class="toolbar">
+        <div class="toolbar__group">
+          <button type="button" class="toolbar__btn" aria-label="Undo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 7H5v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M5 11c1.8-3.2 5.2-5 9-4.5 4.2.5 7.2 4.2 7 8.5-.2 3.8-3.4 6.8-7.2 6.8-2.4 0-4.6-1.2-5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button type="button" class="toolbar__btn" aria-label="Redo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 7h4v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M19 11c-1.8-3.2-5.2-5-9-4.5-4.2.5-7.2 4.2-7 8.5.2 3.8 3.4 6.8 7.2 6.8 2.4 0 4.6-1.2 5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button type="button" class="toolbar__btn" aria-label="Delete">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h12M9 7V5h6v2M8 7l1 12h6l1-12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <p class="toolbar__size">A5 Landscape (210mm × 148mm)</p>
+        <div class="toolbar__group toolbar__group--end">
+          <button type="button" class="toolbar__btn toolbar__btn--text">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 12s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Preview
+          </button>
+          <div class="zoom">
+            <button type="button" class="toolbar__btn" aria-label="Zoom out" (click)="zoomOut()">−</button>
+            <span>{{ zoom }}%</span>
+            <button type="button" class="toolbar__btn" aria-label="Zoom in" (click)="zoomIn()">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas">
+        <div class="canvas__stage" [style.transform]="'scale(' + zoom / 100 + ')'">
+          <div class="canvas__frame" aria-label="A5 landscape card spread preview">
+            <img
+              class="canvas__spread"
+              [src]="cardFrontSrc"
+              alt="Birthday card spread preview"
+              width="558"
+              height="402"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="pages">
+      <h2 class="pages__title">Card pages</h2>
+      <button
+        type="button"
+        class="pages__thumb"
+        [class.is-active]="activePage === 'front'"
+        (click)="selectPage('front')"
+      >
+        <span class="pages__thumb-frame pages__thumb-frame--front">
+          <img [src]="cardFrontSrc" alt="Front cover thumbnail" />
+        </span>
+      </button>
+      <button
+        type="button"
+        class="pages__thumb"
+        [class.is-active]="activePage === 'back'"
+        (click)="selectPage('back')"
+      >
+        <span class="pages__thumb-frame pages__thumb-frame--back">
+          <img [src]="cardBackSrc" alt="Back cover thumbnail" />
+        </span>
+      </button>
+      <div class="pages__action">
+        <a class="btn-next" routerLink="/login">Next: Add details</a>
+        <small>You can review and schedule your card on the next step.</small>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="editor__footer">
+    <p>
+      Need help?
+      <a href="#">Check our guide</a>
+      or
+      <a href="#">contact support</a>
+    </p>
+    <p class="editor__saved">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 12.2l2.4 2.4L16 9.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All changes saved
+    </p>
+  </footer>
+</div>

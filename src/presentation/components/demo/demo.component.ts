@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Card } from 'primeng/card';
 
 type EditorTool = 'templates' | 'images' | 'text' | 'stickers';
 type CardPage = 'front' | 'back';
@@ -18,7 +19,7 @@ interface CardPageConfig {
 
 @Component({
   selector: 'demo',
-  imports: [RouterLink],
+  imports: [RouterLink, Card],
   templateUrl: 'demo.component.html',
   styleUrl: 'demo.component.scss',
 })
@@ -45,8 +46,10 @@ export class DemoComponent {
   // A5 landscape height at 96dpi (559px), shown at ~93% for the editor canvas
   private readonly cardDisplayHeight = 520;
 
-  readonly cardFrontSrc = this.cardPages.front.src;
-  readonly cardBackSrc = this.cardPages.back.src;
+  readonly pageList = [
+    { id: 'front' as CardPage, src: this.cardPages.front.src, label: this.cardPages.front.label },
+    { id: 'back' as CardPage, src: this.cardPages.back.src, label: this.cardPages.back.label },
+  ];
 
   readonly tools: { id: EditorTool; label: string }[] = [
     { id: 'templates', label: 'Templates' },

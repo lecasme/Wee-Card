@@ -223,11 +223,6 @@
   font-size: 0.82rem;
 }
 
-// A5 landscape page height at 72% display scale: 559 × 0.72 ≈ 402 px
-// Spread image (1478×1064): width = 402 × (1478/1064) ≈ 558 px
-$card-spread-width: 558px;
-$card-spread-height: 402px;
-
 .canvas {
   flex: 1;
   display: flex;
@@ -243,8 +238,6 @@ $card-spread-height: 402px;
 }
 
 .canvas__frame {
-  width: $card-spread-width;
-  height: $card-spread-height;
   flex-shrink: 0;
   line-height: 0;
   border-radius: 4px;

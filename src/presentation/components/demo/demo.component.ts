@@ -9,6 +9,13 @@ interface UploadItem {
   alt: string;
 }
 
+interface CardPageConfig {
+  src: string;
+  width: number;
+  height: number;
+  label: string;
+}
+
 @Component({
   selector: 'demo',
   imports: [RouterLink],
@@ -20,8 +27,26 @@ export class DemoComponent {
   activePage: CardPage = 'front';
   zoom = 100;
 
-  readonly cardFrontSrc = '/birthday-1-front.png';
-  readonly cardBackSrc = '/birthday-1-back.png';
+  readonly cardPages: Record<CardPage, CardPageConfig> = {
+    front: {
+      src: '/birthday-1-front.png',
+      width: 1478,
+      height: 1064,
+      label: 'Front cover',
+    },
+    back: {
+      src: '/birthday-1-back.png',
+      width: 1492,
+      height: 1054,
+      label: 'Back cover',
+    },
+  };
+
+  // A5 landscape height at 96dpi (559px), shown at ~93% for the editor canvas
+  private readonly cardDisplayHeight = 520;
+
+  readonly cardFrontSrc = this.cardPages.front.src;
+  readonly cardBackSrc = this.cardPages.back.src;
 
   readonly tools: { id: EditorTool; label: string }[] = [
     { id: 'templates', label: 'Templates' },
@@ -45,6 +70,19 @@ export class DemoComponent {
 
   selectPage(page: CardPage): void {
     this.activePage = page;
+  }
+
+  get activeCard(): CardPageConfig {
+    return this.cardPages[this.activePage];
+  }
+
+  get activeCardWidth(): number {
+    const card = this.activeCard;
+    return Math.round(this.cardDisplayHeight * (card.width / card.height));
+  }
+
+  get activeCardHeight(): number {
+    return this.cardDisplayHeight;
   }
 
   zoomIn(): void {

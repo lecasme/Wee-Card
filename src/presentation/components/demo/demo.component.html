@@ -110,13 +110,18 @@
 
       <div class="canvas">
         <div class="canvas__stage" [style.transform]="'scale(' + zoom / 100 + ')'">
-          <div class="canvas__frame" aria-label="A5 landscape card spread preview">
+          <div
+            class="canvas__frame"
+            [style.width.px]="activeCardWidth"
+            [style.height.px]="activeCardHeight"
+            [attr.aria-label]="activeCard.label + ' preview'"
+          >
             <img
               class="canvas__spread"
-              [src]="cardFrontSrc"
-              alt="Birthday card spread preview"
-              width="558"
-              height="402"
+              [src]="activeCard.src"
+              [alt]="activeCard.label"
+              [width]="activeCardWidth"
+              [height]="activeCardHeight"
             />
           </div>
         </div>

@@ -1,0 +1,5 @@
+@use 'brand-tokens' as brand;
+
+:root {
+  @include brand.css-variables;
+}

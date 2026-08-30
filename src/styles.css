@@ -10,7 +10,7 @@ html {
 
 body {
   margin: 0;
-  background: #fdfcf7;
-  color: #1c1c1c;
-  font-family: Inter, system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
 }

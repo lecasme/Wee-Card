@@ -8,7 +8,7 @@ import {CommonModule} from '@angular/common';
     RouterLink
   ],
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss']
+  styleUrl: 'login.component.scss',
 })
 export class LoginComponent {
 

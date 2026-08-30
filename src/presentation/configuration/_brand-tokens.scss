@@ -1,0 +1,30 @@
+@mixin css-variables {
+  --color-mustard: #c58a21;
+  --color-green: #1b503c;
+  --color-green-deep: #012c01;
+  --color-cream: #faefdd;
+  --color-ink: #1c1c1c;
+  --color-muted: #5f615e;
+  --color-gold: #c58a21;
+  --color-gold-btn: #c58a21;
+  --color-orange: #c58a21;
+  --color-line: #ddd2c0;
+  --color-outline-border: #d4d0c6;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-hand: 'Caveat', cursive;
+  --green: #1b503c;
+  --green-deep: #012c01;
+  --cream: #fefbfa;
+  --ink: #1c1c1c;
+  --muted: #5f615e;
+  --gold: #c58a21;
+  --gold-btn: #c58a21;
+  --orange: #c58a21;
+  --line: #ddd2c0;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --script: 'Great Vibes', cursive;
+  --hand: 'Caveat', cursive;
+}

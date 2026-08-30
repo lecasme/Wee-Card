@@ -1,38 +1,63 @@
+@use '../../configuration/brand-tokens' as brand;
+
 :host {
-  display: block;
+  @include brand.css-variables;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100svh;
-  background: #fdfcf7;
-  font-family: Inter, system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
 }
 
 .login {
   width: min(420px, calc(100% - 2rem));
-  margin: 18vh auto 0;
+  margin: 0 auto;
   text-align: center;
 }
 
 .back {
-  color: #16332a;
+  color: var(--green);
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.back:hover {
+  color: var(--green-deep);
 }
 
 h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 600;
   margin: 1.2rem 0 0.4rem;
+  color: var(--ink);
 }
 
 p {
-  color: #5f615e;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .btn {
   display: inline-flex;
-  margin-top: 1rem;
-  padding: 0.75rem 1.3rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.4rem;
+  padding: 0.82rem 1.35rem;
   border-radius: 999px;
-  background: #16332a;
+  border: 1.5px solid transparent;
+  background: var(--green);
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font: 600 0.92rem/1.2 var(--sans);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: var(--green-deep);
 }

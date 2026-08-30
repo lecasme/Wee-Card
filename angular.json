@@ -25,6 +25,7 @@
               }
             ],
             "styles": [
+              "src/presentation/configuration/theme.scss",
               "src/styles.css"
             ]
           },

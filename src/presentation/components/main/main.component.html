@@ -1,0 +1,130 @@
+<div class="layout">
+
+  <div class="header">
+    <div class="element-mobile">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+      <ng-container *ngTemplateOutlet="header"></ng-container>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <!-- Logo superior -->
+    <div class="element-desktop">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+    </div>
+
+    <!-- Menú de navegación -->
+    <ul class="sidebar-menu">
+      <li *ngIf="['OWNER'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/dashboard"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Reportes" tooltipPosition="right"
+        >
+          <i class="icon ti ti-report-analytics"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Reportes</small>
+      </li>
+      <li *ngIf="['OWNER', 'ADMIN'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/schedule"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Agendar" tooltipPosition="right"
+        >
+          <i class="icon ti ti-calendar"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Agendar</small>
+      </li>
+      <li *ngIf="['OWNER', 'ADMIN'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/clients"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Clientes" tooltipPosition="right"
+        >
+          <i class="icon ti ti-users-group"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Clientes</small>
+      </li>
+      <li *ngIf="['OWNER', 'ADMIN'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/products"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Productos" tooltipPosition="right"
+        >
+          <i class="icon ti ti-package"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Productos</small>
+      </li>
+      <li *ngIf="['OWNER'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/users"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Usuarios" tooltipPosition="right"
+        >
+          <i class="icon ti ti-users"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Usuarios</small>
+      </li>
+      <li *ngIf="['OWNER'].includes(user?.role?.code || '')">
+        <a
+          routerLink="/main/settings"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          pTooltip="Configuración" tooltipPosition="right"
+        >
+          <i class="icon ti ti-settings"></i>
+        </a>
+        <small class="sidebar-menu_label text-xxs">Configuración</small>
+      </li>
+    </ul>
+    <div class="element-desktop">
+      <ng-container *ngTemplateOutlet="header"></ng-container>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="main-content">
+      <router-outlet *ngIf="isConfigReady"></router-outlet>
+    </div>
+  </div>
+
+  <ng-template #logo>
+    <div class="sidebar-logo">
+      <img src="logo.png" alt="Logo de Barber Style">
+    </div>
+  </ng-template>
+
+  <ng-template #header>
+    <div class="campaign-box" (click)="menuLOC.toggle($event)" pTooltip="Locales" tooltipPosition="right">
+      <small class="campaign">
+        <i class="ti ti-building-store local-icon"></i>
+        {{ selectedLocal?.alias }}
+      </small>
+    </div>
+    <p-menu #menuLOC [model]="menuLocals" appendTo="body" [popup]="true"/>
+    <p-avatar
+      (click)="menu.toggle($event)"
+      [label]="getInitials(user?.firstName ?? '-', user?.lastName ?? '-')"
+      styleClass="avatar"
+      size="large"
+      shape="circle"/>
+    <p-menu #menu [model]="menuPRFL" appendTo="body" [popup]="true">
+      <ng-template pTemplate="end">
+        <div class="menu-perfil">
+            <span class="menu-perfil-text">
+              <span class="font-bold text-md">{{ user?.firstName }} {{ user?.lastName }}</span>
+              <p-tag severity="info" [rounded]="true" value="{{ user?.role?.name }}"/>
+            </span>
+        </div>
+      </ng-template>
+    </p-menu>
+  </ng-template>
+
+</div>

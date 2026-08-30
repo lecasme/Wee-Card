@@ -49,12 +49,12 @@
   grid-template-columns: 320px minmax(520px, 1fr) 200px;
   flex: 1;
   min-height: 0;
+  background: #fff;
 }
 
 .sidebar {
   padding: 0.85rem;
-  background: #f0eeea;
-  border-right: 1px solid var(--line);
+  background: #fff;
   overflow: auto;
 }
 
@@ -98,6 +98,31 @@
 
     .p-card-content {
       padding: 0;
+    }
+  }
+
+  .toolbar-card.p-card {
+    width: fit-content;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(1, 44, 1, 0.06), 0 4px 14px rgba(1, 44, 1, 0.05);
+
+    .p-card-body {
+      padding: 0.25rem 0.35rem;
+    }
+
+    .p-card-content {
+      padding: 0;
+    }
+
+    &.toolbar-card--compact .p-card-body {
+      padding: 0.2rem 0.3rem;
+    }
+
+    .toolbar__btn {
+      border: 0;
+      background: transparent;
     }
   }
 }
@@ -252,18 +277,24 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: #eceae6;
+  background: #fff;
 }
 
 .toolbar {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem 0.5rem;
+  background: #fff;
+}
+
+.toolbar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 1rem;
-  min-height: 52px;
-  padding: 0.55rem 1rem;
-  background: var(--cream);
-  border-bottom: 1px solid var(--line);
 }
 
 .toolbar__group {
@@ -273,7 +304,14 @@
 }
 
 .toolbar__group--end {
-  justify-self: end;
+  gap: 0.5rem;
+}
+
+.toolbar__divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 0.25rem;
+  background: #e6e2dc;
 }
 
 .toolbar__btn {
@@ -281,39 +319,61 @@
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  min-width: 34px;
-  height: 34px;
-  padding: 0 0.45rem;
-  border: 1px solid var(--line);
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.5rem;
+  border: 0;
   border-radius: 8px;
-  background: #fff;
+  background: transparent;
   color: var(--ink);
-  font: 500 0.82rem/1 var(--sans);
+  font: 500 0.78rem/1 var(--sans);
   cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+
+  &:hover:not(:disabled) {
+    background: #f3f1ed;
+  }
+
+  &:disabled {
+    color: #b8b4ae;
+    cursor: default;
+  }
+}
+
+.toolbar__btn--labeled {
+  padding: 0 0.55rem;
+}
+
+.toolbar__btn--icon {
+  min-width: 32px;
+  padding: 0;
 }
 
 .toolbar__btn svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .toolbar__size {
   margin: 0;
-  justify-self: center;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   white-space: nowrap;
 }
 
 .zoom {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-left: 0.45rem;
-  padding-left: 0.45rem;
-  border-left: 1px solid var(--line);
+  gap: 0.15rem;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+
+  span {
+    min-width: 2.5rem;
+    text-align: center;
+  }
 }
 
 .canvas {
@@ -350,8 +410,7 @@
   flex-direction: column;
   gap: 0.85rem;
   padding: 0.85rem;
-  background: #f0eeea;
-  border-left: 1px solid var(--line);
+  background: #fff;
   overflow: auto;
 }
 

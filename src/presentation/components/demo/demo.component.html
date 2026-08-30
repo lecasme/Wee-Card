@@ -85,40 +85,52 @@
 
     <main class="workspace">
       <div class="toolbar">
-        <div class="toolbar__group">
-          <button type="button" class="toolbar__btn" aria-label="Undo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 7H5v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M5 11c1.8-3.2 5.2-5 9-4.5 4.2.5 7.2 4.2 7 8.5-.2 3.8-3.4 6.8-7.2 6.8-2.4 0-4.6-1.2-5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button type="button" class="toolbar__btn" aria-label="Redo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M15 7h4v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M19 11c-1.8-3.2-5.2-5-9-4.5-4.2.5-7.2 4.2-7 8.5.2 3.8 3.4 6.8 7.2 6.8 2.4 0 4.6-1.2 5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button type="button" class="toolbar__btn" aria-label="Delete">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 7h12M9 7V5h6v2M8 7l1 12h6l1-12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <p class="toolbar__size">A5 Landscape (210mm × 148mm)</p>
-        <div class="toolbar__group toolbar__group--end">
-          <button type="button" class="toolbar__btn toolbar__btn--text">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 12s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            Preview
-          </button>
-          <div class="zoom">
-            <button type="button" class="toolbar__btn" aria-label="Zoom out" (click)="zoomOut()">−</button>
-            <span>{{ zoom }}%</span>
-            <button type="button" class="toolbar__btn" aria-label="Zoom in" (click)="zoomIn()">+</button>
+        <div class="toolbar__row">
+          <p-card class="toolbar-card">
+            <div class="toolbar__group">
+              <button type="button" class="toolbar__btn toolbar__btn--labeled">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 7H5v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M5 11c1.8-3.2 5.2-5 9-4.5 4.2.5 7.2 4.2 7 8.5-.2 3.8-3.4 6.8-7.2 6.8-2.4 0-4.6-1.2-5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Undo
+              </button>
+              <button type="button" class="toolbar__btn toolbar__btn--labeled" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 7h4v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M19 11c-1.8-3.2-5.2-5-9-4.5-4.2.5-7.2 4.2-7 8.5.2 3.8 3.4 6.8 7.2 6.8 2.4 0 4.6-1.2 5.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Redo
+              </button>
+              <span class="toolbar__divider" aria-hidden="true"></span>
+              <button type="button" class="toolbar__btn toolbar__btn--icon" aria-label="Delete">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 7h12M9 7V5h6v2M8 7l1 12h6l1-12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </p-card>
+
+          <div class="toolbar__group toolbar__group--end">
+            <p-card class="toolbar-card">
+              <button type="button" class="toolbar__btn toolbar__btn--labeled">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 12s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Preview
+              </button>
+            </p-card>
+            <p-card class="toolbar-card toolbar-card--compact">
+              <div class="zoom">
+                <button type="button" class="toolbar__btn toolbar__btn--icon" aria-label="Zoom out" (click)="zoomOut()">−</button>
+                <span>{{ zoom }}%</span>
+                <button type="button" class="toolbar__btn toolbar__btn--icon" aria-label="Zoom in" (click)="zoomIn()">+</button>
+              </div>
+            </p-card>
           </div>
         </div>
+        <p class="toolbar__size">A5 Landscape (210mm × 148mm)</p>
       </div>
 
       <div class="canvas">

@@ -127,6 +127,9 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem 0.85rem;
   min-height: 140px;
+  max-height: 420px;
+  padding-right: 0.25rem;
+  overflow-y: auto;
 }
 
 .template-item {

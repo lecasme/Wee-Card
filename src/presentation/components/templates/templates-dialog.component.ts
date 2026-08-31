@@ -43,9 +43,51 @@ export class TemplatesDialogComponent {
       category: 'birthday',
     },
     {
+      id: 'birthday-2',
+      src: '/birthday-2-front.jpeg',
+      label: 'Birthday 2',
+      category: 'birthday',
+    },
+    {
+      id: 'birthday-3',
+      src: '/birthday-3-front.jpeg',
+      label: 'Birthday 3',
+      category: 'birthday',
+    },
+    {
+      id: 'birthday-4',
+      src: '/birthday-4-front.jpeg',
+      label: 'Birthday 4',
+      category: 'birthday',
+    },
+    {
+      id: 'birthday-5',
+      src: '/birthday-5-front.jpeg',
+      label: 'Birthday 5',
+      category: 'birthday',
+    },
+    {
+      id: 'birthday-6',
+      src: '/birthday-6-front.jpeg',
+      label: 'Birthday 6',
+      category: 'birthday',
+    },
+    {
+      id: 'birthday-7',
+      src: '/birthday-7-front.jpeg',
+      label: 'Birthday 7',
+      category: 'birthday',
+    },
+    {
       id: 'anniversary-1',
       src: '/anniversary-1-front.png',
       label: 'Anniversary Love',
+      category: 'anniversary',
+    },
+    {
+      id: 'anniversary-2',
+      src: '/anniversary-2-front.png',
+      label: 'Anniversary',
       category: 'anniversary',
     },
     {
@@ -61,6 +103,12 @@ export class TemplatesDialogComponent {
       category: 'thank-you',
     },
     {
+      id: 'congrats-2',
+      src: '/congrats-2-front.png',
+      label: 'Thank You',
+      category: 'thank-you',
+    },
+    {
       id: 'christmas-1',
       src: '/christmas-1-front.png',
       label: 'Christmas Cheer',
@@ -73,16 +121,16 @@ export class TemplatesDialogComponent {
       category: 'just-because',
     },
     {
-      id: 'congrats-2',
-      src: '/congrats-2-front.png',
-      label: 'Congratulations',
-      category: 'thank-you',
+      id: 'just-because-2',
+      src: '/just-because-2-front.jpeg',
+      label: 'Just Because 2',
+      category: 'just-because',
     },
     {
-      id: 'anniversary-2',
-      src: '/anniversary-2-front.png',
-      label: 'Anniversary',
-      category: 'anniversary',
+      id: 'just-because-3',
+      src: '/just-because-3-front.jpeg',
+      label: 'Just Because 3',
+      category: 'just-because',
     },
   ];
 
